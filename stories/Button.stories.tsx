@@ -1,8 +1,9 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Meta } from '@storybook/react/types-6-0';
+import { Box, Flex, Container } from '@chakra-ui/react';
 
-import Button from '../components/Button';
+import Button, { MainButton } from '../components/Button';
 
 export default {
 	title: 'Button',
@@ -12,10 +13,27 @@ export default {
 	},
 } as Meta;
 
-const Template: Story = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-	onClick: () => alert('Clicked'),
-	children: 'Button',
-};
+export const basic = () => (
+	<Container width="full">
+		<Flex justify="space-evenly">
+			<Box>
+				<Button
+					onClick={() => {
+						alert('hello');
+					}}
+				>
+					Button
+				</Button>
+			</Box>
+			<Box>
+				<MainButton
+					onClick={() => {
+						alert('hello');
+					}}
+				>
+					MainButton
+				</MainButton>
+			</Box>
+		</Flex>
+	</Container>
+);
